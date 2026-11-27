@@ -110,6 +110,9 @@ main.wide{max-width:1300px}
 .hsec{font:700 13px "Noto Sans KR";color:var(--mute);margin:8px 0 0}
 .doc a.xref{font-weight:500;text-decoration:underline dotted;text-underline-offset:3px}
 .doc a.xref::after{content:" ↗";font-size:.8em;opacity:.6}
+.copybox{position:relative;margin-top:10px}
+.copybtn{position:sticky;top:70px;float:right;margin:10px;min-height:44px;padding:0 18px;border-radius:999px;border:0;background:var(--acc);color:#fff;font:700 15px "Noto Sans KR",sans-serif;cursor:pointer;z-index:2}
+.doc pre.copytext{white-space:pre-wrap;font:15px/1.75 "Noto Sans KR",sans-serif;padding:18px;margin:0}
 .foot{text-align:center;color:var(--mute);font-size:13px;padding:30px 0}
 @media(max-width:600px){.doc table{font-size:13.5px}.doc h2{font-size:21px}.crumb{display:none}}
 @media(prefers-reduced-motion:reduce){.nav,.wrapmain{transition:none}}
@@ -180,6 +183,12 @@ main.wide{max-width:1300px}
     show(h);
   };
   links.forEach(a => a.addEventListener('click', () => { if (!wide()) setOpen(false); }));
+  document.querySelectorAll('.copybtn').forEach(b => b.addEventListener('click', async () => {
+    const pre = document.getElementById('txt-' + b.dataset.copy);
+    try { await navigator.clipboard.writeText(pre.textContent); b.textContent = '복사했어요 ✓'; }
+    catch (e) { const r = document.createRange(); r.selectNodeContents(pre); const s = getSelection(); s.removeAllRanges(); s.addRange(r); b.textContent = '선택됨 — 길게 눌러 복사'; }
+    setTimeout(() => b.textContent = '전체 복사', 2000);
+  }));
   addEventListener('hashchange', route);
   route();
 }

@@ -46,12 +46,14 @@ GROUPS = [
         ("drama6", "드라마·웹툰 핵심 6", "공통/02_드라마웹툰_핵심6.md"),
         ("ai6",    "AI 캐릭터 핵심 6", "공통/03_AI캐릭터_핵심6.md"),
     ]),
+    ("지침 (복사용)", [
+        ("uinst",  "공통 지침 · 모든 프로젝트", "지침/공통_지침.txt"),
+        ("pinst",  "프로젝트 지침 · 로판ai영화", "지침/프로젝트_지침.txt"),
+    ]),
     ("관리", [
         ("needs",  "요구사항 목록", "공통/05_요구사항_목록.md"),
         ("about",  "구조 안내·버전", "00_구조_안내.md"),
         ("restore", "복구 가이드", "관리/01_복구_가이드.md"),
-        ("pinst",  "프로젝트 지침 문구", "관리/02_프로젝트_지침.md"),
-        ("uinst",  "개인 지침 문구", "관리/03_개인_지침.md"),
     ]),
 ]
 
@@ -134,6 +136,21 @@ def mood_body(m, code):
             + f'<h2>참조</h2><div class="mcards">{cards}</div>'
             + (f'<h2>레퍼런스 링크</h2><div class="rls">{"".join(links)}</div>' if links else "")
             + f'<p class="note">시나리오와 별개인 비주얼·톤 기준. 원본: claude/tools/presets/{E(code)}.json 의 mood</p>')
+
+
+TXT_WHERE = {
+    "지침/공통_지침.txt": "claude.ai 설정 → 일반 → Claude에게 주는 지침 (모바일: 프로필 → 지침). 모든 대화·프로젝트에 적용, 새 대화부터 반영.",
+    "지침/프로젝트_지침.txt": "claude.ai 프로젝트 '로판ai영화' 설정 → 지침 칸.",
+}
+
+def txt_body(label, fn):
+    """복사용 지침 파일: 내용만 그대로 보여 주고 전체 복사 버튼을 단다"""
+    text = (DOCS / fn).read_text(encoding="utf-8")
+    return (f'<h1 class="doc-title">{E(label)}</h1>'
+            f'<p class="note" style="margin-top:0">붙여넣을 곳: {E(TXT_WHERE.get(fn, ""))}<br>'
+            f'원본: docs/{E(fn)} — 새 규칙은 이 파일에 이어서 추가하고 커밋한다.</p>'
+            f'<div class="copybox"><button type="button" class="copybtn" data-copy="{E(fn)}">전체 복사</button>'
+            f'<pre class="copytext" id="txt-{E(fn)}">{E(text)}</pre></div>')
 
 
 def scope_css(css, scope="#editor"):
@@ -235,6 +252,8 @@ def build():
         for sid, label, fn in items:
             if sid == "editor":
                 secs.append(section(sid, f"{g} › {label}", "", ed_body, wide=True))
+            elif fn.endswith(".txt"):
+                secs.append(section(sid, f"{g} › {label}", f"claude/{fn}", txt_body(label, fn)))
             else:
                 secs.append(section(sid, f"{g} › {label}", f"claude/{fn}", render((DOCS / fn).read_text(encoding="utf-8"), sid)))
             its.append(f'<a class="it" href="#{sid}" data-go="{sid}">{label}</a>')

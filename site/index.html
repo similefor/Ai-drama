@@ -110,6 +110,9 @@ main.wide{max-width:1300px}
 .hsec{font:700 13px "Noto Sans KR";color:var(--mute);margin:8px 0 0}
 .doc a.xref{font-weight:500;text-decoration:underline dotted;text-underline-offset:3px}
 .doc a.xref::after{content:" ↗";font-size:.8em;opacity:.6}
+.copybox{position:relative;margin-top:10px}
+.copybtn{position:sticky;top:70px;float:right;margin:10px;min-height:44px;padding:0 18px;border-radius:999px;border:0;background:var(--acc);color:#fff;font:700 15px "Noto Sans KR",sans-serif;cursor:pointer;z-index:2}
+.doc pre.copytext{white-space:pre-wrap;font:15px/1.75 "Noto Sans KR",sans-serif;padding:18px;margin:0}
 .foot{text-align:center;color:var(--mute);font-size:13px;padding:30px 0}
 @media(max-width:600px){.doc table{font-size:13.5px}.doc h2{font-size:21px}.crumb{display:none}}
 @media(prefers-reduced-motion:reduce){.nav,.wrapmain{transition:none}}
@@ -164,9 +167,9 @@ main.wide{max-width:1300px}
   <button class="burger" id="burger" type="button" aria-label="메뉴 열기·닫기" aria-controls="nav" aria-expanded="false">☰</button>
   <a class="brand" href="#home">로판ai영화</a>
   <div class="crumb" id="crumb"></div>
-  <span class="ver" title="구조 버전 · 최종 업데이트 2026-11-27 17:01">v3.0</span>
+  <span class="ver" title="구조 버전 · 최종 업데이트 2026-11-27 17:02">v3.0</span>
 </header>
-<nav class="nav" id="nav" aria-label="전체 메뉴"><a class="it home" href="#home" data-go="home">⌂ 홈</a><div class="sep"></div><details class="l1" open><summary>작품</summary><div class="box"><details class="l2" open><summary><i class="dot" style="background:#0e4d4a"></i>그믐과 서리</summary><div class="box l3"><a class="it" href="#01_그믐과_서리-mood" data-go="01_그믐과_서리-mood">분위기·톤 <span class="ext">비주얼</span></a><a class="it" href="#01_그믐과_서리-story" data-go="01_그믐과_서리-story">작품 설정</a><a class="it" href="#01_그믐과_서리-design" data-go="01_그믐과_서리-design">작품 디자인</a></div></details></div></details><details class="l1" open><summary>도구</summary><div class="box"><a class="it" href="#editor" data-go="editor">시나리오 작성 편집기</a></div></details><details class="l1" open><summary>시장·제작 자료</summary><div class="box"><a class="it" href="#market" data-go="market">시장조사</a><a class="it" href="#refs" data-go="refs">제작 참고 (오픈소스)</a><a class="it" href="#dcom" data-go="dcom">디자인·의상 공통자료</a></div></details><details class="l1" open><summary>공통 규칙</summary><div class="box"><a class="it" href="#rules" data-go="rules">기본 규칙</a><a class="it" href="#drama6" data-go="drama6">드라마·웹툰 핵심 6</a><a class="it" href="#ai6" data-go="ai6">AI 캐릭터 핵심 6</a></div></details><details class="l1" open><summary>관리</summary><div class="box"><a class="it" href="#needs" data-go="needs">요구사항 목록</a><a class="it" href="#about" data-go="about">구조 안내·버전</a><a class="it" href="#restore" data-go="restore">복구 가이드</a><a class="it" href="#pinst" data-go="pinst">프로젝트 지침 문구</a><a class="it" href="#uinst" data-go="uinst">개인 지침 문구</a></div></details></nav>
+<nav class="nav" id="nav" aria-label="전체 메뉴"><a class="it home" href="#home" data-go="home">⌂ 홈</a><div class="sep"></div><details class="l1" open><summary>작품</summary><div class="box"><details class="l2" open><summary><i class="dot" style="background:#0e4d4a"></i>그믐과 서리</summary><div class="box l3"><a class="it" href="#01_그믐과_서리-mood" data-go="01_그믐과_서리-mood">분위기·톤 <span class="ext">비주얼</span></a><a class="it" href="#01_그믐과_서리-story" data-go="01_그믐과_서리-story">작품 설정</a><a class="it" href="#01_그믐과_서리-design" data-go="01_그믐과_서리-design">작품 디자인</a></div></details></div></details><details class="l1" open><summary>도구</summary><div class="box"><a class="it" href="#editor" data-go="editor">시나리오 작성 편집기</a></div></details><details class="l1" open><summary>시장·제작 자료</summary><div class="box"><a class="it" href="#market" data-go="market">시장조사</a><a class="it" href="#refs" data-go="refs">제작 참고 (오픈소스)</a><a class="it" href="#dcom" data-go="dcom">디자인·의상 공통자료</a></div></details><details class="l1" open><summary>공통 규칙</summary><div class="box"><a class="it" href="#rules" data-go="rules">기본 규칙</a><a class="it" href="#drama6" data-go="drama6">드라마·웹툰 핵심 6</a><a class="it" href="#ai6" data-go="ai6">AI 캐릭터 핵심 6</a></div></details><details class="l1" open><summary>지침 (복사용)</summary><div class="box"><a class="it" href="#uinst" data-go="uinst">공통 지침 · 모든 프로젝트</a><a class="it" href="#pinst" data-go="pinst">프로젝트 지침 · 로판ai영화</a></div></details><details class="l1" open><summary>관리</summary><div class="box"><a class="it" href="#needs" data-go="needs">요구사항 목록</a><a class="it" href="#about" data-go="about">구조 안내·버전</a><a class="it" href="#restore" data-go="restore">복구 가이드</a></div></details></nav>
 <div class="scrim" id="scrim"></div>
 <div class="wrapmain">
 <main id="main">
@@ -2181,6 +2184,7 @@ main.wide{max-width:1300px}
 <h2 id="rules-8">8. 문서 관리 규칙</h2>
 <ul>
 <li><strong>원본은 무조건 깃 레포(https://github.com/similefor/Ai-drama, main)다.</strong> claude.ai 프로젝트의 claude/ 문서와 통합 자료집 아티팩트는 레포의 사본이며, 서로 다르면 레포가 맞다. 수정은 항상 레포에서 먼저 하고 사본을 맞춘다. <strong>변경은 반드시 레포에 커밋하고 main 에 머지(푸시)한다</strong> (작업 순서는 레포의 CLAUDE.md).</li>
+<li>지침 문구(claude.ai 개인 설정·프로젝트 지침 칸)는 <code>docs/지침/*.txt</code> 에 <strong>붙여넣을 내용만</strong> 두고 계속 추가 관리한다.</li>
 <li><strong>공통 문서</strong>(claude/공통/): 모든 작품에 쓰는 규칙·자료. 특정 작품 이름이나 설정을 넣지 않는다.</li>
 <li><strong>작품 문서</strong>(claude/작품/&lt;번호_작품명&gt;/): 그 작품만의 설정·인물·세계관·로맨스 대상·구조·디자인.</li>
 <li>새 작품은 claude/작품/_템플릿/ 을 복사해서 시작한다.</li>
@@ -2387,6 +2391,27 @@ main.wide{max-width:1300px}
 <li>2026-11-26: 최초 작성</li>
 <li>2026-11-26: 작품별 관리 구조로 분리</li>
 </ul></section>
+<section class="doc" id="uinst" data-crumb="지침 (복사용) › 공통 지침 · 모든 프로젝트" hidden><p class="path">claude/지침/공통_지침.txt</p><h1 class="doc-title">공통 지침 · 모든 프로젝트</h1><p class="note" style="margin-top:0">붙여넣을 곳: claude.ai 설정 → 일반 → Claude에게 주는 지침 (모바일: 프로필 → 지침). 모든 대화·프로젝트에 적용, 새 대화부터 반영.<br>원본: docs/<a class="xref" href="#uinst">지침/공통_지침.txt</a> — 새 규칙은 이 파일에 이어서 추가하고 커밋한다.</p><div class="copybox"><button type="button" class="copybtn" data-copy="지침/공통_지침.txt">전체 복사</button><pre class="copytext" id="txt-지침/공통_지침.txt">[작업 규칙]
+1. 답변은 한국어로 짧고 쉽게.
+2. 작업 시작 시: 레포를 최신으로 받고, 레포의 docs/인수인계/00_프로젝트_현황.md 와 docs/인수인계/ 의 가장 최근 날짜 파일을 먼저 읽고 &quot;남은 일&quot;부터 이어간다. 레포에 CLAUDE.md가 있으면 따른다.
+3. 인수인계 파일 갱신은 토큰 절약을 위해 아래 시점에만, 바뀐 줄만 고친다.
+   - 소스·설정 값을 바꿔 커밋할 때
+   - 주소·경로·ID·결정사항 같은 기준값이 새로 확정됐을 때
+   - 내가 &quot;인수인계&quot; 라고 할 때
+   파일: docs/인수인계/YYYYMMDD_주제.md (확정된 것과 근거 / 소스 반영 상태 / 확인 필요 / 남은 일)
+         docs/인수인계/00_프로젝트_현황.md (현재 기준값 표 / 남은 일 / 사용자 규칙·기억 요청)
+4. &quot;인수인계&quot; 라고 하면: 위 두 파일을 정리해서 작성·갱신하고, 커밋·머지한 뒤 경로만 알려준다.
+5. 변경이 생기면 작업을 끝내기 전에 반드시 레포 최상위에서 ./save.sh 를 실행해 전체 변경분을 커밋하고 main 에 머지(푸시)한 뒤 결과만 한 줄로 알려준다. (&quot;커밋&quot; 이라고 해도 같다.)
+   ./save.sh 가 없으면 git add·commit·push 로 한다. 다른 브랜치에서 작업했으면 main 에 머지한다. 미완성 소스는 커밋 메시지에 &quot;(작업 중)&quot; 을 붙인다.
+6. &quot;기억해&quot; 라고 한 내용은 00_프로젝트_현황.md 의 &quot;사용자 규칙·기억 요청&quot; 섹션에 한 줄로 추가한다.
+7. 원본은 무조건 그 프로젝트의 깃 레포(main)다. claude.ai 프로젝트 문서·아티팩트·로컬 파일은 사본이며, 다르면 레포가 맞다. 수정은 레포에서 먼저 하고 사본을 레포에 맞춘다. 레포 주소는 프로젝트 지침이나 레포의 README/CLAUDE.md에서 확인하고, 없으면 먼저 물어본다.
+8. 프로젝트가 삭제돼도 레포만으로 관리·복구할 수 있어야 한다. 대화에서 정한 것, 지침 문구, 주소·ID 같은 기준값은 모두 레포 문서에 남기고 커밋한다.
+</pre></div></section>
+<section class="doc" id="pinst" data-crumb="지침 (복사용) › 프로젝트 지침 · 로판ai영화" hidden><p class="path">claude/지침/프로젝트_지침.txt</p><h1 class="doc-title">프로젝트 지침 · 로판ai영화</h1><p class="note" style="margin-top:0">붙여넣을 곳: claude.ai 프로젝트 &#x27;로판ai영화&#x27; 설정 → 지침 칸.<br>원본: docs/<a class="xref" href="#pinst">지침/프로젝트_지침.txt</a> — 새 규칙은 이 파일에 이어서 추가하고 커밋한다.</p><div class="copybox"><button type="button" class="copybtn" data-copy="지침/프로젝트_지침.txt">전체 복사</button><pre class="copytext" id="txt-지침/프로젝트_지침.txt">원본은 무조건 깃 레포 https://github.com/similefor/Ai-drama (main) 이다.
+작업 전 레포를 최신으로 받고 CLAUDE.md 를 따른다. 프로젝트 claude/ 문서는 레포의 사본이며, 다르면 레포가 맞다.
+변경은 반드시 레포에 커밋하고 main 에 머지(푸시)한다 (./save.sh).
+프로젝트가 지워져도 레포만으로 복구할 수 있어야 한다 (docs/<a class="xref" href="#restore">관리/01_복구_가이드.md</a>).
+</pre></div></section>
 <section class="doc" id="needs" data-crumb="관리 › 요구사항 목록" hidden><p class="path">claude/공통/05_요구사항_목록.md</p><h1 class="doc-title">사용자 요구사항 목록</h1><nav class="toc scroll"><a href="#needs-0">1. 작품 방향</a><a href="#needs-1">2. 시나리오 규칙</a><a href="#needs-2">3. 디자인·의상</a><a href="#needs-3">4. 문서·열람</a><a href="#needs-4">5. 남은 일 (요구에서 나온 다음 작업)</a><a href="#needs-5">업데이트 기록</a></nav>
 <blockquote>
 <p>사용자가 말한 요구를 모두 모은 목록 (프로젝트 전체). 반영 위치의 '작품1'은 claude/작품/01_그믐과_서리/ 이다.
@@ -2645,13 +2670,19 @@ main.wide{max-width:1300px}
 <td>34</td>
 <td><strong>프로젝트가 삭제돼도 깃 레포에서 관리</strong>될 수 있게 + 모든 프로젝트에 쓰는 지침</td>
 <td>✅</td>
-<td>docs/관리/01~03 (복구 가이드, 프로젝트 지침, 개인 지침), CLAUDE.md</td>
+<td>docs/<a class="xref" href="#restore">관리/01_복구_가이드.md</a>, docs/지침/, CLAUDE.md</td>
+</tr>
+<tr>
+<td>35</td>
+<td><strong>지침서 공통 파일</strong>을 만들어 계속 추가 관리, <strong>내용만 복사해서 붙여넣을 수</strong> 있게</td>
+<td>✅</td>
+<td>docs/<a class="xref" href="#uinst">지침/공통_지침.txt</a> · 프로젝트_지침.txt, 자료집 '지침 (복사용)' 메뉴 + 전체 복사 버튼</td>
 </tr>
 </tbody>
 </table></div>
 <h2 id="needs-4">5. 남은 일 (요구에서 나온 다음 작업)</h2>
 <ul>
-<li>⏳ 프로젝트 지침 칸·개인 설정 지침 교체 (사용자 직접, 문구는 docs/관리/02·03)</li>
+<li>⏳ 프로젝트 지침 칸·개인 설정 지침 붙여넣기 (사용자 직접, 문구는 docs/지침/*.txt)</li>
 <li>⏳ 형식 확정: 웹툰 / AI 숏드라마</li>
 <li>⏳ 1화 대본(컷 구성)</li>
 <li>⏳ 11~40화 회차별 훅 채우기</li>
@@ -2661,6 +2692,7 @@ main.wide{max-width:1300px}
 <h2 id="needs-5">업데이트 기록</h2>
 <ul>
 <li>2026-11-26: 최초 작성 (요구사항 24개)</li>
+<li>2026-11-27: 복사용 지침서 공통 파일(35) 추가</li>
 <li>2026-11-27: 레포만으로 복구·전체 프로젝트 지침(34) 추가</li>
 <li>2026-11-27: 깃 레포 원본 규칙(33) 추가</li>
 <li>2026-11-26: 통합 자료집·햄버거 메뉴(32) 추가</li>
@@ -2686,10 +2718,11 @@ main.wide{max-width:1300px}
 │  ├─ 05_요구사항_목록.md
 │  ├─ 06_제작_참고자료_오픈소스.md   ← 시나리오·AI 영상 제작 오픈소스 정리
 │  └─ 07_시장조사.md               ← 별도 링크 페이지 '시장조사'로 발행
-├─ 관리/                         ← 복구·지침 문구 (프로젝트가 지워져도 레포만으로 복구)
-│  ├─ 01_복구_가이드.md
-│  ├─ 02_프로젝트_지침.md
-│  └─ 03_개인_지침.md
+├─ 지침/                         ← 복사용 지침서 (내용만, 계속 추가)
+│  ├─ 공통_지침.txt              ← 모든 프로젝트 (개인 설정 지침 칸)
+│  └─ 프로젝트_지침.txt          ← 이 프로젝트 지침 칸
+├─ 관리/
+│  └─ 01_복구_가이드.md          ← 프로젝트가 지워져도 레포만으로 복구
 ├─ 작품/
 │  ├─ _템플릿/                   ← 새 작품 시작용 빈 양식
 │  │  ├─ 01_설정.md
@@ -2743,12 +2776,13 @@ main.wide{max-width:1300px}
  ├ 기본 규칙
  ├ 드라마·웹툰 핵심 6
  └ AI 캐릭터 핵심 6
+지침 (복사용)
+ ├ 공통 지침 · 모든 프로젝트   [전체 복사] 버튼
+ └ 프로젝트 지침 · 로판ai영화  [전체 복사] 버튼
 관리
  ├ 요구사항 목록
  ├ 구조 안내·버전
- ├ 복구 가이드
- ├ 프로젝트 지침 문구
- └ 개인 지침 문구
+ └ 복구 가이드
 </code></pre>
 <ul>
 <li>☰ 버튼으로 메뉴를 열고 닫는다. 넓은 화면(1100px 이상)에서는 왼쪽에 고정, 휴대폰에서는 서랍처럼 열린다.</li>
@@ -2863,12 +2897,12 @@ main.wide{max-width:1300px}
 <td><code>docs/인수인계/YYYYMMDD_*.md</code></td>
 </tr>
 <tr>
-<td>claude.ai 프로젝트 지침 칸 문구</td>
-<td><code>docs/<a class="xref" href="#pinst">관리/02_프로젝트_지침.md</a></code></td>
+<td>claude.ai 프로젝트 지침 칸 문구 (복사용)</td>
+<td><code>docs/<a class="xref" href="#pinst">지침/프로젝트_지침.txt</a></code></td>
 </tr>
 <tr>
-<td>claude.ai 개인 설정 지침 문구</td>
-<td><code>docs/<a class="xref" href="#uinst">관리/03_개인_지침.md</a></code></td>
+<td>claude.ai 개인 설정 지침 문구 (복사용, 모든 프로젝트 공통)</td>
+<td><code>docs/<a class="xref" href="#uinst">지침/공통_지침.txt</a></code></td>
 </tr>
 <tr>
 <td>통합 자료집 소스</td>
@@ -2893,14 +2927,14 @@ main.wide{max-width:1300px}
 <h2 id="restore-2">3. 프로젝트가 지워졌을 때 복구 순서</h2>
 <ol>
 <li>claude.ai에서 새 프로젝트를 만든다 (이름: 로판ai영화).</li>
-<li>프로젝트 지침 칸에 <code>docs/<a class="xref" href="#pinst">관리/02_프로젝트_지침.md</a></code> 의 문구를 붙여넣는다.</li>
+<li>프로젝트 지침 칸에 <code>docs/<a class="xref" href="#pinst">지침/프로젝트_지침.txt</a></code> 내용을 그대로 붙여넣는다.</li>
 <li>새 대화에서 Claude에게: <strong>"https://github.com/similefor/Ai-drama 레포로 프로젝트 복구해 줘"</strong> 라고 요청한다. Claude가 할 일:</li>
 <li>레포를 받는다.</li>
 <li>아래 '4. 사본 경로 규칙'대로 프로젝트 <code>claude/</code> 에 문서를 복사한다.</li>
 <li><code>python3 tools/build.py</code> 로 <code>site/index.html</code> 을 만든다.</li>
 <li>통합 자료집을 새 아티팩트로 발행하고, 편집기용 권한을 켠다 (capabilities: <code>sample</code>, <code>downloads</code>).</li>
 <li>새 아티팩트 주소를 <code>docs/인수인계/00_프로젝트_현황.md</code> 와 <code>docs/<a class="xref" href="#about">00_구조_안내.md</a></code> 에 적고 <strong>커밋·머지</strong>한다.</li>
-<li>개인 설정 지침이 비어 있으면 <code>docs/<a class="xref" href="#uinst">관리/03_개인_지침.md</a></code> 문구를 넣는다.</li>
+<li>개인 설정 지침이 비어 있으면 <code>docs/<a class="xref" href="#uinst">지침/공통_지침.txt</a></code> 내용을 그대로 넣는다.</li>
 </ol>
 <h2 id="restore-3">4. 사본 경로 규칙 (레포 → claude.ai 프로젝트)</h2>
 <div class="scroll"><table>
@@ -2931,54 +2965,14 @@ main.wide{max-width:1300px}
 <h2 id="restore-4">5. 지켜야 할 것</h2>
 <ul>
 <li>새 기준값(주소·ID·결정)이 생기면 <strong>레포 문서에 먼저 적고 커밋·머지</strong>한다.</li>
-<li>지침 문구를 바꾸면 <code>docs/관리/02·03</code> 도 같이 고친다.</li>
+<li>지침 문구는 <code>docs/지침/*.txt</code> 에서만 고치고 커밋한 뒤 claude.ai 에 다시 붙여넣는다.</li>
 <li>프로젝트나 아티팩트에서만 고친 내용은 레포에 다시 옮기기 전까지 사라질 수 있는 것으로 본다.</li>
 </ul>
 <h2 id="restore-5">업데이트 기록</h2>
 <ul>
 <li>2026-11-27: 최초 작성</li>
 </ul></section>
-<section class="doc" id="pinst" data-crumb="관리 › 프로젝트 지침 문구" hidden><p class="path">claude/관리/02_프로젝트_지침.md</p><h1 class="doc-title">claude.ai 프로젝트 지침 칸 문구</h1><nav class="toc scroll"><a href="#pinst-0">업데이트 기록</a></nav>
-<blockquote>
-<p>claude.ai 프로젝트 "로판ai영화" 설정의 <strong>지침</strong> 칸에 아래 문구를 그대로 붙여넣는다.
-문구를 바꾸면 이 파일도 같이 고치고 커밋·머지한다.</p>
-</blockquote>
-<pre><code>원본은 무조건 깃 레포 https://github.com/similefor/Ai-drama (main) 이다.
-작업 전 레포를 최신으로 받고 CLAUDE.md 를 따른다. 프로젝트 claude/ 문서는 레포의 사본이며, 다르면 레포가 맞다.
-변경은 반드시 레포에 커밋하고 main 에 머지(푸시)한다 (./save.sh).
-프로젝트가 지워져도 레포만으로 복구할 수 있어야 한다 (docs/<a class="xref" href="#restore">관리/01_복구_가이드.md</a>).
-</code></pre>
-<h2 id="pinst-0">업데이트 기록</h2>
-<ul>
-<li>2026-11-27: 최초 작성</li>
-</ul></section>
-<section class="doc" id="uinst" data-crumb="관리 › 개인 지침 문구" hidden><p class="path">claude/관리/03_개인_지침.md</p><h1 class="doc-title">claude.ai 개인 설정 지침 문구 (모든 프로젝트 공통)</h1><nav class="toc scroll"><a href="#uinst-0">업데이트 기록</a></nav>
-<blockquote>
-<p>claude.ai <strong>설정 → 일반 → Claude에게 주는 지침</strong> (모바일: 프로필 → 지침) 칸에 아래 문구를 통째로 넣는다.
-모든 대화·프로젝트에 적용되며, 저장 후 새 대화부터 반영된다.</p>
-</blockquote>
-<pre><code>[작업 규칙]
-1. 답변은 한국어로 짧고 쉽게.
-2. 작업 시작 시: 레포를 최신으로 받고, 레포의 docs/인수인계/00_프로젝트_현황.md 와 docs/인수인계/ 의 가장 최근 날짜 파일을 먼저 읽고 &quot;남은 일&quot;부터 이어간다. 레포에 CLAUDE.md가 있으면 따른다.
-3. 인수인계 파일 갱신은 토큰 절약을 위해 아래 시점에만, 바뀐 줄만 고친다.
-   - 소스·설정 값을 바꿔 커밋할 때
-   - 주소·경로·ID·결정사항 같은 기준값이 새로 확정됐을 때
-   - 내가 &quot;인수인계&quot; 라고 할 때
-   파일: docs/인수인계/YYYYMMDD_주제.md (확정된 것과 근거 / 소스 반영 상태 / 확인 필요 / 남은 일)
-         docs/인수인계/00_프로젝트_현황.md (현재 기준값 표 / 남은 일 / 사용자 규칙·기억 요청)
-4. &quot;인수인계&quot; 라고 하면: 위 두 파일을 정리해서 작성·갱신하고, 커밋·머지한 뒤 경로만 알려준다.
-5. 변경이 생기면 작업을 끝내기 전에 반드시 레포 최상위에서 ./save.sh 를 실행해 전체 변경분을 커밋하고 main 에 머지(푸시)한 뒤 결과만 한 줄로 알려준다. (&quot;커밋&quot; 이라고 해도 같다.)
-   ./save.sh 가 없으면 git add·commit·push 로 한다. 다른 브랜치에서 작업했으면 main 에 머지한다. 미완성 소스는 커밋 메시지에 &quot;(작업 중)&quot; 을 붙인다.
-6. &quot;기억해&quot; 라고 한 내용은 00_프로젝트_현황.md 의 &quot;사용자 규칙·기억 요청&quot; 섹션에 한 줄로 추가한다.
-7. 원본은 무조건 그 프로젝트의 깃 레포(main)다. claude.ai 프로젝트 문서·아티팩트·로컬 파일은 사본이며, 다르면 레포가 맞다. 수정은 레포에서 먼저 하고 사본을 레포에 맞춘다. 레포 주소는 프로젝트 지침이나 레포의 README/CLAUDE.md에서 확인하고, 없으면 먼저 물어본다.
-8. 프로젝트가 삭제돼도 레포만으로 관리·복구할 수 있어야 한다. 대화에서 정한 것, 지침 문구, 주소·ID 같은 기준값은 모두 레포 문서에 남기고 커밋한다.
-</code></pre>
-<h2 id="uinst-0">업데이트 기록</h2>
-<ul>
-<li>2026-11-27: 최초 작성 (원본=깃 레포, 커밋·머지 필수, 레포만으로 복구 가능)</li>
-<li>2026-11-27: 사용자가 쓰던 기존 규칙 1~6을 그대로 두고 7·8(원본=레포, 레포만으로 복구) 추가, 4·5는 커밋·머지 필수로 변경</li>
-</ul></section>
-<p class="foot">로판ai영화 통합 자료집 · 골격 v3.0 · 편집기 편집기 v2.0 · 최종 업데이트 2026-11-27 17:01<br>원본은 프로젝트 문서(claude/ 폴더)이며, 문서를 고치면 이 페이지도 함께 갱신됩니다.</p>
+<p class="foot">로판ai영화 통합 자료집 · 골격 v3.0 · 편집기 편집기 v2.0 · 최종 업데이트 2026-11-27 17:02<br>원본은 프로젝트 문서(claude/ 폴더)이며, 문서를 고치면 이 페이지도 함께 갱신됩니다.</p>
 </main>
 </div>
 
@@ -3195,6 +3189,12 @@ fill({}); draftInfo();
     show(h);
   };
   links.forEach(a => a.addEventListener('click', () => { if (!wide()) setOpen(false); }));
+  document.querySelectorAll('.copybtn').forEach(b => b.addEventListener('click', async () => {
+    const pre = document.getElementById('txt-' + b.dataset.copy);
+    try { await navigator.clipboard.writeText(pre.textContent); b.textContent = '복사했어요 ✓'; }
+    catch (e) { const r = document.createRange(); r.selectNodeContents(pre); const s = getSelection(); s.removeAllRanges(); s.addRange(r); b.textContent = '선택됨 — 길게 눌러 복사'; }
+    setTimeout(() => b.textContent = '전체 복사', 2000);
+  }));
   addEventListener('hashchange', route);
   route();
 }
