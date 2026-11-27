@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{{PROJECT}} · 통합 자료집</title>
+<!-- {{PROJECT}} 통합 허브 골격 {{VERSION}} — tools/build.py 로 생성. 모든 작품·공통 자료·편집기·시장조사를 한 페이지에 담는다 -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@600;800&family=Noto+Sans+KR:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+/* VOICE: 작가의 작업 서재, 차분하고 찾기 쉽게
+   IDEA: 궁궐 서고의 목차 — 왼쪽 서가(햄버거 메뉴, 3단계)와 펼친 책(본문)
+   PICTURE: 홈의 단청 띠와 작품 카드, 각 문서의 위치를 알려 주는 경로 표시
+   COLOUR and TYPE: 청록 단청 + 주홍 포인트 + 흰 바탕 / Noto Serif KR 제목, Noto Sans KR 본문
+   LAYOUT: 상단 바(☰·경로·버전) → 1100px 이상은 왼쪽 메뉴 고정, 그 아래는 서랍 메뉴 */
+:root{color-scheme:light dark;
+--bg:light-dark(#fbfaf7,#111514);--ink:light-dark(#1c1f1e,#e9e6de);--mute:light-dark(#5d6461,#a3aaa6);
+--line:light-dark(#e2e0d9,#2a312f);--card:light-dark(#ffffff,#171c1b);--side:light-dark(#f3f1eb,#151a19);
+--main:#0e4d4a;--main2:light-dark(#0e4d4a,#8cc7c0);--acc:#b8362a;--gold:#d9a53a;--navw:296px}
+:root[data-theme=light]{color-scheme:light}:root[data-theme=dark]{color-scheme:dark}
+*{box-sizing:border-box;min-width:0}
+html{scroll-padding-top:76px}
+body{margin:0;background:var(--bg);color:var(--ink);font:16.5px/1.75 "Noto Sans KR",system-ui,sans-serif;overflow-x:clip;word-break:keep-all}
+a{color:var(--main2);text-underline-offset:3px}
+a:focus-visible,button:focus-visible,summary:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
+
+/* 상단 바 */
+.top{position:sticky;top:0;z-index:30;height:60px;display:flex;align-items:center;gap:12px;padding:0 14px;background:var(--main);color:#f3efe4}
+.burger{width:44px;height:44px;border:0;border-radius:10px;background:rgba(255,255,255,.12);color:#fff;font-size:22px;cursor:pointer;flex:none}
+.brand{font:800 19px "Noto Serif KR",serif;color:#fff;text-decoration:none;white-space:nowrap}
+.crumb{flex:1;font-size:13.5px;color:#cfe3dd;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.crumb b{color:#fff;font-weight:700}
+.ver{margin-left:auto;background:#f3efe4;color:var(--main);font-weight:700;border-radius:999px;padding:2px 10px;font-size:13px;white-space:nowrap}
+
+/* 햄버거 메뉴 (서랍) */
+.nav{position:fixed;z-index:40;top:60px;bottom:0;left:0;width:min(86vw,var(--navw));background:var(--side);border-right:1px solid var(--line);overflow-y:auto;padding:12px 10px 40px;transform:translateX(-102%);transition:transform .22s ease}
+body.open .nav{transform:none}
+.scrim{position:fixed;inset:60px 0 0 0;z-index:35;background:rgba(0,0,0,.35);display:none}
+body.open .scrim{display:block}
+.nav .home{display:flex;align-items:center;gap:8px;font-weight:700}
+.nav a.it{display:flex;align-items:center;min-height:42px;padding:6px 12px;border-radius:10px;color:var(--ink);text-decoration:none;font-size:15px}
+.nav a.it:hover{background:var(--line)}
+.nav a.it[aria-current=page]{background:var(--acc);color:#fff}
+.nav a.it .ext{margin-left:auto;font-size:12px;opacity:.7}
+.nav details{margin:2px 0}
+.nav summary{list-style:none;cursor:pointer;display:flex;align-items:center;gap:8px;min-height:42px;padding:6px 12px;border-radius:10px}
+.nav summary::-webkit-details-marker{display:none}
+.nav summary::after{content:"›";margin-left:auto;transition:transform .15s;color:var(--mute);font-size:18px}
+.nav details[open]>summary::after{transform:rotate(90deg)}
+.nav summary:hover{background:var(--line)}
+.l1>summary{font:700 13px "Noto Sans KR";letter-spacing:.02em;color:var(--mute);margin-top:10px}
+.l1>.box{padding-left:4px}
+.l2>summary{font-weight:700;font-size:15.5px;color:var(--ink)}
+.l2>summary .dot{width:10px;height:10px;border-radius:50%;flex:none}
+.l2>.box{margin-left:14px;padding-left:8px;border-left:2px solid var(--line)}
+.l3 a.it{font-size:14.5px;min-height:38px}
+.nav .sep{height:1px;background:var(--line);margin:10px 6px}
+@media(min-width:1100px){
+  .nav{transform:none;top:60px}
+  .scrim{display:none!important}
+  body:not(.closed) .wrapmain{margin-left:var(--navw)}
+  body.closed .nav{transform:translateX(-102%)}
+}
+
+/* 본문 */
+.wrapmain{transition:margin .22s ease}
+main{max-width:880px;margin:0 auto;padding:26px max(5vw,18px) 80px}
+main.wide{max-width:1300px}
+.doc{display:block}.doc[hidden]{display:none}
+.path{font-size:13px;color:var(--mute);margin:0 0 4px}
+.doc-title{font:800 clamp(28px,4.5vw,40px)/1.15 "Noto Serif KR",serif;margin:0 0 14px;color:var(--main2);text-wrap:balance}
+.toc{display:flex;gap:8px;overflow-x:auto;padding:4px 0 14px;margin-bottom:10px;border-bottom:1px solid var(--line)}
+.toc a{flex:none;font-size:13.5px;padding:6px 12px;border:1px solid var(--line);border-radius:999px;color:var(--mute);text-decoration:none;white-space:nowrap}
+.toc a:hover{color:var(--ink);border-color:var(--main2)}
+.doc h2{font:700 24px/1.3 "Noto Serif KR",serif;margin:44px 0 12px;padding-top:12px;border-top:2px solid var(--main2)}
+.doc h3{font-size:18.5px;margin:28px 0 8px;color:var(--acc)}
+.doc blockquote{margin:16px 0;padding:12px 16px;background:var(--card);border-left:4px solid var(--gold);border-radius:6px;color:var(--mute)}
+.doc blockquote p{margin:4px 0}
+.scroll{overflow-x:auto;margin:14px 0}
+.doc table{border-collapse:collapse;width:100%;font-size:15px;background:var(--card)}
+.doc th,.doc td{border:1px solid var(--line);padding:9px 11px;text-align:left;vertical-align:top}
+.doc th{background:light-dark(#eef4f2,#1d2725);font-weight:700;white-space:nowrap}
+.doc code{font-size:13.5px;background:var(--line);padding:2px 6px;border-radius:4px;overflow-wrap:anywhere}
+.doc pre{background:var(--card);border:1px solid var(--line);padding:14px;border-radius:8px;overflow-x:auto}
+.doc hr{border:0;border-top:1px dashed var(--line);margin:32px 0}
+.doc ul,.doc ol{padding-left:1.3em}.doc li{margin:3px 0}
+.doc strong{color:light-dark(#111,#fff)}
+/* 분위기·톤 */
+.lead{font:600 clamp(19px,2.6vw,23px)/1.55 "Noto Serif KR",serif;margin:6px 0 14px}
+.kws{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:8px}.kw{padding:6px 12px;border-radius:999px;background:var(--main);color:#f3efe4;font-size:14px}
+.sws{display:grid;grid-template-columns:repeat(auto-fill,minmax(130px,1fr));gap:10px}
+.sw{background:var(--card);border:1px solid var(--line);border-radius:10px;overflow:hidden;font-size:13.5px}.sw i{display:block;height:64px}.sw b,.sw span{display:block;padding:0 10px}.sw b{padding-top:8px}.sw span{color:var(--mute);padding-bottom:8px;font-variant-numeric:tabular-nums}
+.mcards{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:12px}
+.mcard{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px 16px}.mcard h3{margin:0 0 6px;font-size:16px}.mcard p{margin:0}
+.rls{display:flex;flex-wrap:wrap;gap:8px}.rl{padding:9px 14px;min-height:44px;display:inline-flex;align-items:center;border:1px solid var(--line);border-radius:999px;text-decoration:none;background:var(--card)}
+.note{font-size:13px;color:var(--mute);margin-top:24px}
+/* 홈 */
+.hero{background:var(--main);color:#f3efe4;border-radius:16px;overflow:hidden;margin-bottom:22px}
+.hero .in{padding:clamp(22px,4vw,40px)}
+.hero h1{font:800 clamp(30px,5vw,46px)/1.1 "Noto Serif KR",serif;margin:0}
+.hero p{margin:10px 0 0;color:#cfe3dd}
+.dan{display:block;width:100%;height:26px}
+.hgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,250px),1fr));gap:12px;margin:12px 0 26px}
+.hcard{display:block;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px 18px;text-decoration:none;color:var(--ink)}
+.hcard:hover{border-color:var(--main2)}
+.hcard b{display:block;font:700 18px "Noto Serif KR",serif;margin-bottom:4px}
+.hcard span{font-size:14px;color:var(--mute)}
+.hcard .pal{display:flex;gap:4px;margin-top:10px}.hcard .pal i{width:22px;height:10px;border-radius:3px}
+.hsec{font:700 13px "Noto Sans KR";color:var(--mute);margin:8px 0 0}
+.doc a.xref{font-weight:500;text-decoration:underline dotted;text-underline-offset:3px}
+.doc a.xref::after{content:" ↗";font-size:.8em;opacity:.6}
+.foot{text-align:center;color:var(--mute);font-size:13px;padding:30px 0}
+@media(max-width:600px){.doc table{font-size:13.5px}.doc h2{font-size:21px}.crumb{display:none}}
+@media(prefers-reduced-motion:reduce){.nav,.wrapmain{transition:none}}
+@media(prefers-reduced-motion:no-preference){.doc:not([hidden]){animation:in .3s ease}@keyframes in{from{opacity:0;transform:translateY(6px)}}}
+
+#editor .bar,#editor .menu,#editor .wrap{padding-left:0;padding-right:0;max-width:none}
+/* ===== 시나리오 작성 편집기 (이 아래는 #editor 안에서만 적용) ===== */
+{{EDITOR_CSS}}
+</style>
+</head>
+<body>
+<header class="top">
+  <button class="burger" id="burger" type="button" aria-label="메뉴 열기·닫기" aria-controls="nav" aria-expanded="false">☰</button>
+  <a class="brand" href="#home">{{PROJECT}}</a>
+  <div class="crumb" id="crumb"></div>
+  <span class="ver" title="구조 버전 · 최종 업데이트 {{UPDATED}}">{{VERSION}}</span>
+</header>
+<nav class="nav" id="nav" aria-label="전체 메뉴">{{NAV}}</nav>
+<div class="scrim" id="scrim"></div>
+<div class="wrapmain">
+<main id="main">
+{{SECTIONS}}
+<p class="foot">{{PROJECT}} 통합 자료집 · 골격 {{VERSION}} · 편집기 {{EDITOR_VERSION}} · 최종 업데이트 {{UPDATED}}<br>원본은 프로젝트 문서(claude/ 폴더)이며, 문서를 고치면 이 페이지도 함께 갱신됩니다.</p>
+</main>
+</div>
+
+{{EDITOR_SCRIPTS}}
+<script>
+{
+  const docs = [...document.querySelectorAll('.doc')];
+  const links = [...document.querySelectorAll('.nav a.it[data-go]')];
+  const main = document.getElementById('main');
+  const crumb = document.getElementById('crumb');
+  const burger = document.getElementById('burger');
+  const wide = () => matchMedia('(min-width:1100px)').matches;
+  const setOpen = v => {
+    if (wide()) { document.body.classList.toggle('closed', !v); }
+    else { document.body.classList.toggle('open', v); }
+    burger.setAttribute('aria-expanded', v);
+  };
+  const isOpen = () => wide() ? !document.body.classList.contains('closed') : document.body.classList.contains('open');
+  burger.addEventListener('click', () => setOpen(!isOpen()));
+  document.getElementById('scrim').addEventListener('click', () => setOpen(false));
+  addEventListener('keydown', e => { if (e.key === 'Escape' && !wide()) setOpen(false); });
+  burger.setAttribute('aria-expanded', wide());
+
+  const show = (id, anchor) => {
+    const d = docs.find(x => x.id === id) || docs[0];
+    docs.forEach(x => x.hidden = x !== d);
+    main.classList.toggle('wide', d.classList.contains('wide'));
+    links.forEach(a => a.dataset.go === d.id ? a.setAttribute('aria-current', 'page') : a.removeAttribute('aria-current'));
+    const cur = links.find(a => a.dataset.go === d.id);
+    if (cur) { let p = cur.parentElement; while (p) { if (p.tagName === 'DETAILS') p.open = true; p = p.parentElement; } }
+    crumb.textContent = '';
+    (d.dataset.crumb || '').split('›').map(s => s.trim()).filter(Boolean).forEach((s, i, arr) => {
+      if (i) crumb.append(' › ');
+      const el = document.createElement(i === arr.length - 1 ? 'b' : 'span'); el.textContent = s; crumb.append(el);
+    });
+    try { localStorage.setItem('hubLast', d.id); } catch (e) {}
+    if (anchor) { const el = document.getElementById(anchor); if (el) el.scrollIntoView(); } else scrollTo(0, 0);
+    if (!wide()) setOpen(false);
+  };
+  const route = () => {
+    const h = decodeURIComponent(location.hash.slice(1));
+    if (!h) { let k = null; try { k = localStorage.getItem('hubLast'); } catch (e) {} show(k || 'home'); return; }
+    const el = document.getElementById(h);
+    if (el && !el.classList.contains('doc')) { const d = el.closest('.doc'); if (d) { show(d.id, h); return; } }
+    show(h);
+  };
+  links.forEach(a => a.addEventListener('click', () => { if (!wide()) setOpen(false); }));
+  addEventListener('hashchange', route);
+  route();
+}
+</script>
+</body>
+</html>
