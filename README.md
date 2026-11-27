@@ -1,6 +1,9 @@
 # 로판ai영화 (Ai-drama)
 
-로맨스 판타지 **AI 드라마·웹툰 제작 자료집**. 여러 작품을 함께 관리할 수 있도록 공통 규칙과 작품별 문서를 나눠 두었다.
+로맨스 판타지 **AI 드라마·웹툰 제작 자료집**.
+
+> **이 레포가 원본이다.** claude.ai 프로젝트 문서와 통합 자료집은 이 레포의 사본이며, 다르면 레포가 맞다. 작업 순서는 [CLAUDE.md](CLAUDE.md).
+ 여러 작품을 함께 관리할 수 있도록 공통 규칙과 작품별 문서를 나눠 두었다.
 
 - 통합 자료집 (claude.ai): https://claude.ai/artifact/KnEAL5qqyTcteDdstdFyxC
 - 레포 안 열람 파일: [`site/index.html`](site/index.html) — 브라우저로 열면 같은 화면 (단, 'Claude로 시나리오 작성' 버튼은 claude.ai 안에서만 동작)

@@ -164,7 +164,7 @@ main.wide{max-width:1300px}
   <button class="burger" id="burger" type="button" aria-label="메뉴 열기·닫기" aria-controls="nav" aria-expanded="false">☰</button>
   <a class="brand" href="#home">로판ai영화</a>
   <div class="crumb" id="crumb"></div>
-  <span class="ver" title="구조 버전 · 최종 업데이트 2026-11-27 16:54">v3.0</span>
+  <span class="ver" title="구조 버전 · 최종 업데이트 2026-11-27 16:58">v3.0</span>
 </header>
 <nav class="nav" id="nav" aria-label="전체 메뉴"><a class="it home" href="#home" data-go="home">⌂ 홈</a><div class="sep"></div><details class="l1" open><summary>작품</summary><div class="box"><details class="l2" open><summary><i class="dot" style="background:#0e4d4a"></i>그믐과 서리</summary><div class="box l3"><a class="it" href="#01_그믐과_서리-mood" data-go="01_그믐과_서리-mood">분위기·톤 <span class="ext">비주얼</span></a><a class="it" href="#01_그믐과_서리-story" data-go="01_그믐과_서리-story">작품 설정</a><a class="it" href="#01_그믐과_서리-design" data-go="01_그믐과_서리-design">작품 디자인</a></div></details></div></details><details class="l1" open><summary>도구</summary><div class="box"><a class="it" href="#editor" data-go="editor">시나리오 작성 편집기</a></div></details><details class="l1" open><summary>시장·제작 자료</summary><div class="box"><a class="it" href="#market" data-go="market">시장조사</a><a class="it" href="#refs" data-go="refs">제작 참고 (오픈소스)</a><a class="it" href="#dcom" data-go="dcom">디자인·의상 공통자료</a></div></details><details class="l1" open><summary>공통 규칙</summary><div class="box"><a class="it" href="#rules" data-go="rules">기본 규칙</a><a class="it" href="#drama6" data-go="drama6">드라마·웹툰 핵심 6</a><a class="it" href="#ai6" data-go="ai6">AI 캐릭터 핵심 6</a></div></details><details class="l1" open><summary>관리</summary><div class="box"><a class="it" href="#needs" data-go="needs">요구사항 목록</a><a class="it" href="#about" data-go="about">구조 안내·버전</a></div></details></nav>
 <div class="scrim" id="scrim"></div>
@@ -2180,6 +2180,7 @@ main.wide{max-width:1300px}
 </ul>
 <h2 id="rules-8">8. 문서 관리 규칙</h2>
 <ul>
+<li><strong>원본은 무조건 깃 레포(https://github.com/similefor/Ai-drama, main)다.</strong> claude.ai 프로젝트의 claude/ 문서와 통합 자료집 아티팩트는 레포의 사본이며, 서로 다르면 레포가 맞다. 수정은 항상 레포에서 먼저 하고 사본을 맞춘다. <strong>변경은 반드시 레포에 커밋하고 main 에 머지(푸시)한다</strong> (작업 순서는 레포의 CLAUDE.md).</li>
 <li><strong>공통 문서</strong>(claude/공통/): 모든 작품에 쓰는 규칙·자료. 특정 작품 이름이나 설정을 넣지 않는다.</li>
 <li><strong>작품 문서</strong>(claude/작품/&lt;번호_작품명&gt;/): 그 작품만의 설정·인물·세계관·로맨스 대상·구조·디자인.</li>
 <li>새 작품은 claude/작품/_템플릿/ 을 복사해서 시작한다.</li>
@@ -2210,6 +2211,7 @@ main.wide{max-width:1300px}
 <li>2026-11-26: 편집기·제작 참고자료 관리 규칙 추가</li>
 <li>2026-11-26: 분위기·톤 / 시장조사 관리 규칙 추가</li>
 <li>2026-11-26: 통합 자료집(v3.0) 기준으로 HTML 규칙 변경</li>
+<li>2026-11-27: 원본은 깃 레포 규칙 추가</li>
 </ul></section>
 <section class="doc" id="drama6" data-crumb="공통 규칙 › 드라마·웹툰 핵심 6" hidden><p class="path">claude/공통/02_드라마웹툰_핵심6.md</p><h1 class="doc-title">드라마·웹툰 시나리오 핵심 6가지</h1><nav class="toc scroll"><a href="#drama6-0">1. 로그라인</a><a href="#drama6-1">2. 주인공</a><a href="#drama6-2">3. 상대역</a><a href="#drama6-3">4. 3막 구조</a><a href="#drama6-4">5. 회차 구성</a><a href="#drama6-5">6. 형식 구분</a><a href="#drama6-6">업데이트 기록</a></nav>
 <blockquote>
@@ -2633,6 +2635,12 @@ main.wide{max-width:1300px}
 <td>✅</td>
 <td>통합 자료집 v3.0 (tools/hub.html, build.py)</td>
 </tr>
+<tr>
+<td>33</td>
+<td>깃허브 레포에 올리기, <strong>원본은 무조건 깃 레포</strong>, 변경은 <strong>반드시 커밋·머지</strong>로 전체 프로젝트 지침화</td>
+<td>✅</td>
+<td>CLAUDE.md, <a class="xref" href="#rules">공통/01_기본_규칙.md</a> 8장, <a class="xref" href="#about">00_구조_안내.md</a>, 인수인계</td>
+</tr>
 </tbody>
 </table></div>
 <h2 id="needs-4">5. 남은 일 (요구에서 나온 다음 작업)</h2>
@@ -2647,6 +2655,7 @@ main.wide{max-width:1300px}
 <h2 id="needs-5">업데이트 기록</h2>
 <ul>
 <li>2026-11-26: 최초 작성 (요구사항 24개)</li>
+<li>2026-11-27: 깃 레포 원본 규칙(33) 추가</li>
 <li>2026-11-26: 통합 자료집·햄버거 메뉴(32) 추가</li>
 <li>2026-11-26: 분위기·톤 별도 메뉴(30), 시장조사 별도 링크(31) 추가</li>
 <li>2026-11-26: 편집기(28), 오픈소스 참고자료(29) 추가</li>
@@ -2657,7 +2666,7 @@ main.wide{max-width:1300px}
 <p>여러 작품을 만들 수 있도록 <strong>공통 규칙</strong>과 <strong>작품별 문서</strong>를 나눠 관리한다.
 현재 구조 버전: <strong>v3.0</strong> · <a class="xref" href="#editor">시나리오 작성 편집기</a> <strong>v2.0</strong>
 모든 자료는 <strong>통합 자료집 한 페이지</strong>에서 봅니다: <a href="https://claude.ai/artifact/KnEAL5qqyTcteDdstdFyxC" target="_blank" rel="noopener">로판ai영화 · 통합 자료집</a>
-깃허브 레포: https://github.com/similefor/Ai-drama (docs/ 에 같은 문서, <code>./save.sh</code> 로 커밋)</p>
+<strong>원본은 깃허브 레포</strong>: https://github.com/similefor/Ai-drama (main). claude.ai 프로젝트 문서와 자료집은 레포의 사본이며, 다르면 레포가 맞다. 작업 순서는 레포의 CLAUDE.md, 커밋은 <code>./save.sh</code>.</p>
 </blockquote>
 <h2 id="about-0">폴더 구조</h2>
 <pre><code>claude/
@@ -2797,7 +2806,7 @@ main.wide{max-width:1300px}
 </tr>
 </tbody>
 </table></div></section>
-<p class="foot">로판ai영화 통합 자료집 · 골격 v3.0 · 편집기 편집기 v2.0 · 최종 업데이트 2026-11-27 16:54<br>원본은 프로젝트 문서(claude/ 폴더)이며, 문서를 고치면 이 페이지도 함께 갱신됩니다.</p>
+<p class="foot">로판ai영화 통합 자료집 · 골격 v3.0 · 편집기 편집기 v2.0 · 최종 업데이트 2026-11-27 16:58<br>원본은 프로젝트 문서(claude/ 폴더)이며, 문서를 고치면 이 페이지도 함께 갱신됩니다.</p>
 </main>
 </div>
 
