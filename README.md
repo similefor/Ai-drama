@@ -6,9 +6,10 @@
 > claude.ai 프로젝트가 지워져도 이 레포만으로 복구한다: [복구 가이드](docs/관리/01_복구_가이드.md).
  여러 작품을 함께 관리할 수 있도록 공통 규칙과 작품별 문서를 나눠 두었다.
 
+- 시나리오 워크벤치: [`site/workbench.html`](site/workbench.html) — 다중 작품, 요구사항, 시장조사, 세계관, 디자인, 훅, 회차 대본, AI 프롬프트 관리
 - 통합 자료집 (claude.ai): https://claude.ai/artifact/KnEAL5qqyTcteDdstdFyxC
 - 레포 안 열람 파일: [`site/index.html`](site/index.html) — 브라우저로 열면 같은 화면 (단, 'Claude로 시나리오 작성' 버튼은 claude.ai 안에서만 동작)
-- 현재 구조 버전: **v3.0** · 시나리오 작성 편집기 **v2.0**
+- 현재 구조 버전: **v3.0** · 기존 편집기 **v2.0** · 시나리오 워크벤치 **v1.0 시안**
 
 ## 폴더 구조
 
@@ -32,9 +33,11 @@ docs/
 tools/
 ├─ build.py                     문서 → site/index.html 빌드
 ├─ hub.html                     통합 자료집 골격 (햄버거 메뉴 3단계)
-├─ editor.html                  시나리오 작성 편집기 부품
+├─ editor.html                  기존 시나리오 작성 편집기 부품
+├─ workbench.html               다중 작품 제작 워크벤치 v1.0 시안
 └─ presets/<작품>.json           작품 입력값 + 분위기·톤(mood)
 site/index.html                 빌드 결과 (통합 자료집)
+site/workbench.html              브라우저 실행용 시나리오 워크벤치
 save.sh                         전체 변경분 커밋·푸시
 ```
 
